@@ -1,0 +1,103 @@
+<?xml version="1.0"?>
+<robot name="arm">
+
+    <material name="gray">
+        <color rgba="0.2 0.2 0.2 1" />
+    </material>
+    
+    <material name="black">
+        <color rgba="0 0 0 1" />
+    </material>
+    
+    <material name="red">
+        <color rgba="1 0 0 1" />
+    </material>
+    
+<link name="world" />
+
+<link name="base_link">
+    
+    <visual>
+        <geometry>
+            <box size="0.05 0.05 0.2" />
+        </geometry>
+        <material name="black" />
+        <origin rpy="0 0 0" xyz="0 0 0.1" />
+    </visual>
+
+    <collision>
+        <geometry>
+            <box size="0.055 0.055 0.2" />
+        </geometry>
+        <origin rpy="0 0 0" xyz="0 0 0.1" />
+    </collision>
+
+    <inertial>
+        <mass value="0.5" />
+        <inertia ixx="1.0" iyy="1.0" izz="2.0" ixy="0.0" ixz="0.0" iyz="0.0" />
+        
+    </inertial>
+</link>
+<link name="link1">
+    <visual>
+        <geometry>
+            <box size="0.03 0.03 0.15" />
+        </geometry>
+        <material name="gray" />
+        <origin rpy="-1.57 0 1.57" xyz="0.075 0 0" />
+    </visual>
+
+    <collision>
+        <geometry>
+            <box size="0.035 0.035 0.15" />
+        </geometry>
+        <origin rpy="0 0 0" xyz="0 0 0.075" />
+    </collision>
+
+    <inertial>
+        <mass value="0.3" />
+        <inertia ixx="0.5" iyy="0.5" izz="1" ixy="0.0" ixz="0.0" iyz="0.0" />
+    </inertial>
+</link>
+<link name="link2">
+    <visual>
+        <geometry>
+            <cylinder length="0.1" radius="0.01" />
+        </geometry>
+        <material name="red" />
+    </visual>
+
+    <collision>
+        <geometry>
+            <cylinder length="0.1" radius="0.01" />
+        </geometry>
+    </collision>
+
+    <inertial>
+        <mass value="0.1" />
+        <inertia ixx="0.4" iyy="0.4" izz="0.7" ixy="0.0" ixz="0.0" iyz="0.0" />
+    </inertial>
+</link>
+
+    <joint name="base_link_to_world" type="fixed">
+        <origin rpy="0 0 0" xyz="0 0 0" />
+        <parent link="world" />
+        <child link="base_link" />
+    </joint>
+        <joint name="joint1" type="continuous">
+        <axis xyz="0 0 1" />
+        <parent link="base_link" />
+        <child link="link1" />
+        <origin rpy="0 1.57 0" xyz="0.04 0 0.18" />
+        <limit effort="60.0" velocity="1.0" />
+        <dynamics damping="2" friction="0.5" />
+    </joint>
+        <joint name="joint2" type="prismatic">
+        <axis xyz="0 0 1" />
+        <parent link="link1" />
+        <child link="link2" />
+        <origin rpy="0 1.57 0" xyz="0.06 0 0" />
+        <limit effort="1000.0" lower="0" upper="0.09" velocity="0.2" />
+        <dynamics damping="10" friction="100" />
+    </joint>
+</robot>
