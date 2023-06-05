@@ -1,0 +1,13 @@
+<launch>
+
+  <arg name="load_iiwa_controllers" value="true"/>
+  <arg name="rqt_gui" value="true"/>
+  <arg name="load_rviz" value="true"/>
+
+  <include file="$(find kuka_lbr_iiwa_gazebo_pkg)/launch/kuka_lbr_iiwa_world.launch" />
+  
+  <include file="$(find kuka_lbr_iiwa_control_pkg)/launch/kuka_lbr_iiwa_control.launch" if="$(arg load_iiwa_controllers)"/>
+  
+  <node name="rviz" pkg="rviz" type="rviz"/>
+  
+</launch>

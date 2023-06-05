@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <package format="2">
-  <name>kuka_lbr_iiwa_support</name>
+  <name>kuka_lbr_iiwa_description_pkg</name>
   <version>0.1.0</version>
   <description>
     <p>

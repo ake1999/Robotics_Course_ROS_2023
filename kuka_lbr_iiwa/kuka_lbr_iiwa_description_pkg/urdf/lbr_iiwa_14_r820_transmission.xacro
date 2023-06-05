@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+
+  <!-- Transmission macro -->
+  <xacro:macro name="SimpleTransmissionPosition" params="joint n">
+    <transmission name="tran${n}">
+      <type>transmission_interface/SimpleTransmission</type>
+      <joint name="${joint}">
+        <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+      </joint>
+      <actuator name="motor${n}">
+        <mechanicalReduction>1</mechanicalReduction>
+      </actuator>
+    </transmission>
+  </xacro:macro>
+
+  <!-- Transmission macro -->
+  <xacro:macro name="SimpleTransmissionEffort" params="joint n">
+    <transmission name="tran${n}">
+      <type>transmission_interface/SimpleTransmission</type>
+      <joint name="${joint}">
+        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      </joint>
+      <actuator name="motor${n}">
+        <mechanicalReduction>1</mechanicalReduction>
+      </actuator>
+    </transmission>
+  </xacro:macro>
+
+  <!-- Transmission 1 -->
+  <xacro:SimpleTransmissionPosition n="1" joint="joint_a1" />
+
+  <!-- Transmission 2 -->
+  <xacro:SimpleTransmissionPosition n="2" joint="joint_a2" />
+
+  <!-- Transmission 3 -->
+  <xacro:SimpleTransmissionPosition n="3" joint="joint_a3" />
+
+  <!-- Transmission 4 -->
+  <xacro:SimpleTransmissionPosition n="4" joint="joint_a4" />
+
+  <!-- Transmission 5 -->
+  <xacro:SimpleTransmissionPosition n="5" joint="joint_a5" />
+
+  <!-- Transmission 6 -->
+  <xacro:SimpleTransmissionPosition n="6" joint="joint_a6" />
+
+  <!-- Transmission 7 -->
+  <xacro:SimpleTransmissionPosition n="7" joint="joint_a7" />
+
+  <!-- Transmission 8 -->
+  <xacro:SimpleTransmissionEffort n="8" joint="gripper" />
+
+  <!-- Transmission 9 -->
+  <xacro:SimpleTransmissionEffort n="9" joint="gripper_sub" />
+
+</robot>
