@@ -8,6 +8,6 @@
   
   <include file="$(find kuka_lbr_iiwa_control_pkg)/launch/kuka_lbr_iiwa_control.launch" if="$(arg load_iiwa_controllers)"/>
   
-  <node name="rviz" pkg="rviz" type="rviz"/>
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find kuka_lbr_iiwa_description_pkg)/rviz/kuka_lbr_iiwa_gazebo.rviz" if="$(arg load_rviz)"/>
   
 </launch>

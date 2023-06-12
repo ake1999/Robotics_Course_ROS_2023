@@ -12,8 +12,8 @@
       <minDepth>0.001</minDepth>
     </gazebo>
   </xacro:macro>
-    <!-- Gazebo Gripper Reference macro -->
-  <xacro:macro name="RefLinkGrip" params="ref">
+    <!-- Gazebo Gray Reference macro -->
+  <xacro:macro name="RefLinkGray" params="ref">
     <gazebo reference="${ref}">
       <kp>1000000.0</kp>
       <kd>100.0</kd>
@@ -53,18 +53,21 @@
   <xacro:RefLink ref="link_7"/>
 
   <!-- tool0 -->
-  <xacro:RefLinkGrip ref="tool0"/>
+  <xacro:RefLinkGray ref="tool0"/>
 
   <!-- gripper_link -->
-  <xacro:RefLinkGrip ref="gripper_link"/>
+  <xacro:RefLinkGray ref="gripper_link"/>
 
   <!-- gripper_link_sub -->
-  <xacro:RefLinkGrip ref="gripper_link_sub"/>
+  <xacro:RefLinkGray ref="gripper_link_sub"/>
+
+  <!-- conveyor_belt -->
+  <xacro:RefLinkGray ref="conveyor_belt"/>
 
   <!-- ros_control plugin -->
   <gazebo>
     <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
-    <robotNamespace>/kuka_lbr_iiwa</robotNamespace>
+<!--    <robotNamespace>/kuka_lbr_iiwa</robotNamespace>-->
       <controlPeriod>0.001</controlPeriod>
       <robotSimType>gazebo_ros_control/DefaultRobotHWSim</robotSimType>
       <legacyModeNS>true</legacyModeNS>

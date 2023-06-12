@@ -5,9 +5,9 @@
   <!-- Load joint controller configurations from YAML file to parameter server -->
   <rosparam file="$(find kuka_lbr_iiwa_control_pkg)/config/iiwa_control.yaml" command="load"/>
 
-  <!-- load the controllers -->
+  <!-- load the controllers, it could have ns attribute like ns="/kuka_lbr_iiwa"-->
   <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false"
-	output="screen" ns="/kuka_lbr_iiwa" args="joint_state_controller
+	output="screen" args="joint_state_controller
 					  joint1_position_controller
 					  joint2_position_controller
 					  joint3_position_controller
@@ -20,9 +20,9 @@
   <!-- convert joint states to TF transforms for rviz, etc -->
 
   <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" 
-  respawn="false" output="screen">
-    <remap from="/joint_states" to="/kuka_lbr_iiwa/joint_states" />
-  </node>
+  respawn="false" output="screen"/>
+<!--    <remap from="/joint_states" to="/kuka_lbr_iiwa/joint_states" />-->
+<!--  </node>-->
 
   <include file="$(find kuka_lbr_iiwa_control_pkg)/launch/kuka_lbr_iiwa_rqt_gui.launch" if="$(arg rqt_gui)"/>
 
