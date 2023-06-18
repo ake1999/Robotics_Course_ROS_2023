@@ -1,0 +1,11 @@
+moveit_setup_assistant_config:
+  URDF:
+    package: kuka_lbr_iiwa_description_pkg
+    relative_path: urdf/lbr_iiwa_14_r820.xacro
+    xacro_args: ""
+  SRDF:
+    relative_path: config/kuka_lbr_iiwa_14_r820.srdf
+  CONFIG:
+    author_name: Ali Karimzade
+    author_email: alikarimzade29@gmail.com
+    generated_timestamp: 1686447539
