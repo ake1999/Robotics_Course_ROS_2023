@@ -1,0 +1,6 @@
+<launch>
+
+  <node name="pick_place" pkg="kuka_lbr_iiwa_pick_place_pkg" type="pick_place.py" respawn="false" output="screen">
+  </node>
+
+</launch>
